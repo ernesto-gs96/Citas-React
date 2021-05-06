@@ -9,10 +9,13 @@ function App() {
 
   // Función que tome las citas actuales y agregue la nueva
   const crearCita = cita => {
-    guardarCitas([
-      ...citas,
-      cita
-    ]);
+    guardarCitas([...citas, cita]);
+  }
+
+  // Función que elimina una cita por su id
+  const eliminarCita = id => {
+    const nuevaCitas = citas.filter(cita => cita.id !== id);
+    guardarCitas(nuevaCitas);
   }
 
   return (
@@ -32,6 +35,7 @@ function App() {
               <Cita
                 key={cita.id}
                 cita={cita}
+                eliminarCita={eliminarCita}
               />
             ))}
           </div>
